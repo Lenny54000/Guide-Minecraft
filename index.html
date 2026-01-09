@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Minecraft Hardcore</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .playlist {
+            background: #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .playlist a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .playlist a:hover {
+            text-decoration: underline;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        section {
+            margin-bottom: 35px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        h3 {
+            color: #34495e;
+            font-size: 1.4em;
+            margin: 20px 0 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        h3::before {
+            content: "▶";
+            color: #3498db;
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+        
+        .tips-list, .steps-list {
+            list-style: none;
+        }
+        
+        .tips-list li {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 4px solid #e74c3c;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        
+        .tips-list li:hover {
+            transform: translateX(5px);
+            background: #fff5f5;
+        }
+        
+        .steps-list > li {
+            background: #f0f7ff;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .steps-list > li > strong {
+            color: #2c3e50;
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .sub-steps {
+            list-style: none;
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        
+        .sub-steps li {
+            padding: 8px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .sub-steps li:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        .sub-steps li.completed {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+        
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #3498db;
+            border-radius: 4px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .sub-steps li.completed .checkbox {
+            background: #27ae60;
+            border-color: #27ae60;
+        }
+        
+        .sub-steps li.completed .checkbox::after {
+            content: "✓";
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .bonus {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .bonus h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+        
+        .bonus ul {
+            list-style: none;
+        }
+        
+        .bonus li {
+            padding: 10px;
+            padding-left: 35px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .bonus li:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .bonus li.completed {
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+        
+        .bonus .checkbox {
+            border-color: white;
+            margin-right: 10px;
+            margin-left: -25px;
+        }
+        
+        .bonus li.completed .checkbox {
+            background: #fff;
+            border-color: #fff;
+        }
+        
+        .bonus li.completed .checkbox::after {
+            content: "✓";
+            color: #f39c12;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .reset-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .reset-btn:hover {
+            background: #c0392b;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .warning strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Guide Minecraft Hardcore</h1>
+            <div class="playlist">
+                📺 <a href="https://youtube.com/playlist?list=PLPsZaXX7LVfI9vo0fEeMCYwYOReKawKxD" target="_blank">Playlist Tutoriel</a>
+            </div>
+        </header>
+        
+        <div class="content">
+            <section>
+                <h2>💡 Tips Essentiels</h2>
+                <ul class="tips-list">
+                    <li>Toujours avoir un totem dans sa seconde main ou à défaut un bouclier</li>
+                    <li>Toujours mettre son plastron à la place de ses élytres quand on n'est pas en vol, c'est 40% de l'armure</li>
+                    <li>Si on n'est pas en netherite, toujours mettre une pièce d'armure en or dans le Nether, de préférence le casque</li>
+                    <li>En hardcore, ne jamais prendre de risques indispensables même si c'est beaucoup plus long</li>
+                    <li>Ne jamais tricher sous aucun prétexte, même pour pas grand-chose, tu vas ruiner le "Minecraft feeling" et ne plus aimer ton monde</li>
+                    <li>Ne pas hésiter à générer plusieurs mondes jusqu'à avoir un village proche d'une forêt et d'un pillager outpost</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>📋 Grandes Étapes</h2>
+                
+                <ol class="steps-list">
+                    <li>
+                        <strong>1. Early Game</strong>
+                        <ul class="sub-steps">
+                            <li data-id="step-1-1"><div class="checkbox"></div><span>Trouver un village</span></li>
+                            <li data-id="step-1-2"><div class="checkbox"></div><span>Faire une ferme à fer (full fer)</span></li>
+                            <li data-id="step-1-3"><div class="checkbox"></div><span>Faire une ferme à raid</span></li>
+                            <li data-id="step-1-4"><div class="checkbox"></div><span>Collecter des Ominous Bottles</span></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <strong>2. Trading</strong>
+                        <ul class="sub-steps">
+                            <li data-id="step-2-1"><div class="checkbox"></div><span>Faire un breeder à villageois</span></li>
+                            <li data-id="step-2-2"><div class="checkbox"></div><span>Faire un hall de trading</span></li>
+                            <li data-id="step-2-3"><div class="checkbox"></div><span>Sécuriser le full diams et les carottes dorées</span></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <strong>3. Nether</strong>
+                        <ul class="sub-steps">
+                            <li data-id="step-3-1"><div class="checkbox"></div><span>Blazes</span></li>
+                            <li data-id="step-3-2"><div class="checkbox"></div><span>Nether wart</span></li>
+                            <li data-id="step-3-3"><div class="checkbox"></div><span>Ender pearls</span></li>
+                            <li data-id="step-3-4"><div class="checkbox"></div><span>Un peu de soul sand et de netherrack, c'est toujours utile</span></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <strong>4. End</strong>
+                        <ul class="sub-steps">
+                            <li data-id="step-4-1"><div class="checkbox"></div><span>Dragon</span></li>
+                            <li data-id="step-4-2"><div class="checkbox"></div><span>Élytra</span></li>
+                            <li data-id="step-4-3"><div class="checkbox"></div><span>Shulker</span></li>
+                            <li data-id="step-4-4"><div class="checkbox"></div><span>Creeper farm</span></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <strong>5. Stuff</strong>
+                        <ul class="sub-steps">
+                            <li data-id="step-5-1"><div class="checkbox"></div><span>Villageois libraires</span></li>
+                            <li data-id="step-5-2"><div class="checkbox"></div><span>Netherite / Smithing template</span></li>
+                            <li data-id="step-5-3"><div class="checkbox"></div><span>Swift Sneak 3 / Soul Speed 3</span></li>
+                            <li data-id="step-5-4"><div class="checkbox"></div><span>XP farm dans l'End</span></li>
+                            <li data-id="step-5-5"><div class="checkbox"></div><span>Armor trim</span></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <strong>6. Fermes</strong>
+                        <ul class="sub-steps">
+                            <li data-id="step-6-1"><div class="checkbox"></div><span>Nether hub</span></li>
+                            <li data-id="step-6-2"><div class="checkbox"></div><span>Shulker farm</span></li>
+                            <li data-id="step-6-3"><div class="checkbox"></div><span>Gold farm</span></li>
+                            <li data-id="step-6-4"><div class="checkbox"></div><span>Ferme à trade avec les piglins</span></li>
+                            <li data-id="step-6-5"><div class="checkbox"></div><span>Ferme à wither skeleton</span></li>
+                            <li data-id="step-6-6"><div class="checkbox"></div><span>Blaze farm</span></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <strong>7. Base</strong>
+                        <ul class="sub-steps">
+                            <li data-id="step-7-1"><div class="checkbox"></div><span>Auto storage</span></li>
+                            <li data-id="step-7-2"><div class="checkbox"></div><span>Beautiful build</span></li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+            
+            <section class="bonus">
+                <h2>⭐ Objectifs Bonus</h2>
+                <ul>
+                    <li data-id="bonus-1"><div class="checkbox"></div><span>All advancements</span></li>
+                    <li data-id="bonus-2"><div class="checkbox"></div><span>All beacons</span></li>
+                    <li data-id="bonus-3"><div class="checkbox"></div><span>Méga build et méga ferme</span></li>
+                    <li data-id="bonus-4"><div class="checkbox"></div><span>Toutes les têtes</span></li>
+                    <li data-id="bonus-5"><div class="checkbox"></div><span>Tous les disques</span></li>
+                </ul>
+                <button class="reset-btn" onclick="resetProgress()">Réinitialiser la progression</button>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Charger la progression depuis le localStorage
+        function loadProgress() {
+            const saved = JSON.parse(localStorage.getItem('minecraftProgress') || '{}');
+            Object.keys(saved).forEach(id => {
+                if (saved[id]) {
+                    const element = document.querySelector(`[data-id="${id}"]`);
+                    if (element) {
+                        element.classList.add('completed');
+                    }
+                }
+            });
+        }
+
+        // Sauvegarder la progression
+        function saveProgress(id, completed) {
+            const progress = JSON.parse(localStorage.getItem('minecraftProgress') || '{}');
+            progress[id] = completed;
+            localStorage.setItem('minecraftProgress', JSON.stringify(progress));
+        }
+
+        // Gérer les clics sur les items
+        document.querySelectorAll('[data-id]').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('completed');
+                const id = this.getAttribute('data-id');
+                const isCompleted = this.classList.contains('completed');
+                saveProgress(id, isCompleted);
+            });
+        });
+
+        // Réinitialiser la progression
+        function resetProgress() {
+            if (confirm('Êtes-vous sûr de vouloir réinitialiser toute votre progression ?')) {
+                localStorage.removeItem('minecraftProgress');
+                document.querySelectorAll('[data-id]').forEach(item => {
+                    item.classList.remove('completed');
+                });
+            }
+        }
+
+        // Charger la progression au démarrage
+        loadProgress();
+    </script>
+</body>
+                          </html>
